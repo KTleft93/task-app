@@ -1,0 +1,152 @@
+.title {
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body{
+  text-align: center;
+ 
+}
+
+input{
+  border-radius: 5px;
+}
+
+footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 5.5rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #f0f0f0; 
+}
+
+li{
+  list-style-type: none;
+}
+
+.card-list {
+  border: 15px solid #35BFDE ;
+  border-radius: 20px;
+  padding: 5px;
+  margin: auto;
+  width: 50%; 
+  margin-top: 2%;
+}
+
+.task-item{
+ display:block;
+ border: 5px solid #000000;
+ padding-top: 10px;
+ padding-bottom: 8px;
+ font-family:Impact, Haettenschweiler, 'Arial Narrow', sans-serif;
+ font-weight: 100;
+  margin-top: 2%;
+  margin-right:5%
+}
+
+
+
+.task-input {
+  width: 300px;
+  height: 40px;
+  font-size: 18px;
+}
+
+.add-task-button {
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 13px 29px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background: #029E50;
+  color: white;
+  cursor: pointer
+}
+
+.clear-task-button{
+  margin-top: 2.5rem;
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 13px 29px;
+  font-weight: bold;
+  border-radius: 5px;
+  background: #CD0B28; 
+  color: white;
+}
+
+.edit-task-button{
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-right: 2%;
+  margin-top: 2.5%;
+}
+
+.delete-task-button{
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+
+.input-container{
+  display: block;
+}
+
+.task-item-name{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 18px;
+}
+
+.task-count-label{
+display: inline-block;
+}
+
+.modal{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content{
+  z-index: 1;
+  width: 350px;
+  height: 220px;
+  background: white;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  position: relative;
+  animation: animate 0.3s;
+  padding-top: 5%;
+}
+
+.yes-button{
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-right: 2%;
+  margin-top: 2.5%;
+}
+
+.no-button{
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+@keyframes animate {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}
