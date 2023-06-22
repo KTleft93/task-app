@@ -1,7 +1,9 @@
 ## Task List App
 
 Built using React + TypeScript + Redux
+
 npm i - to install any dependancies
+
 npm start - to start the project
 
 ## Features
