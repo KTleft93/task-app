@@ -11,5 +11,6 @@ npm start - to start the project
 - Add task
 - Edit task
 - Delete task(s)
+- Toggle task(s)
 
-Tasks are saved to local storage
+Tasks displayed as a list and are saved to local storage
