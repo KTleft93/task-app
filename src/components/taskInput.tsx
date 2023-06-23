@@ -50,10 +50,10 @@ const TaskInput: React.FC<TaskInputProps> = ({ editMode, editingTask, onCancelEd
 
   return (
     <div className="input-container">
-      <input placeholder="Add your Task..." className="Task-input" type="text" value={text} onChange={handleChange} />
+      <input placeholder="Add your Task..." className="task-input" type="text" value={text} onChange={handleChange} />
       {!isValidInput && <p style={{ color: 'red' }}>Please enter only characters. aA-Zz only.</p>}
-      <button className="add-Task-button" onClick={handleAddTask}>{editMode ? 'Save Task' : 'Add Task'}</button>
-      {editMode && <button className="add-Task-button" onClick={onCancelEdit}>Cancel</button>}
+      <button className="add-task-button" onClick={handleAddTask}>{editMode ? 'Save Task' : 'Add Task'}</button>
+      {editMode && <button className="add-task-button" onClick={onCancelEdit}>Cancel</button>}
     </div>
   );
 };
