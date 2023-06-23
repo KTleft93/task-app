@@ -1,8 +1,8 @@
 import React, { useState,useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addtask, edittask, deletetask, toggletask, loadtasks, cleartasks } from './actions/taskAction';
+import { addTask, editTask, deleteTask, toggleTask, loadTasks, clearTasks } from './actions/taskAction';
 import { RootState } from './reducers/store';
-import DeletetaskModal from './components/deleteConfirm';
+import DeleteTaskModal from './components/deleteConfirm';
 import TaskCounter from './components/taskCounter';
 import TaskInput from './components/taskInput';
 import { TaskState, Task } from './types';
@@ -11,72 +11,70 @@ import './App.css';
 
 const App: React.FC = () => {
   const [text, setText] = useState('');
-  const [selectedtask, setSelectedtask] = useState<Task | null>(null);
+  const [selectedTask, setSelectedTask] = useState<Task | null>(null);
   const [showModal, setShowModal] = useState(false);
   const tasks = useSelector((state:RootState) => state.tasks);
   const dispatch = useDispatch();
   const [editMode, setEditMode] = useState(false);
-  const [editingtask, setEditingtask] =  useState<Task | null>(null);
+  const [editingTask, setEditingTask] =  useState<Task | null>(null);
 
   useEffect(() => {
-    const savedtasks = localStorage.getItem('tasks');
-    console.log(tasks)
-    if (savedtasks) {
-      console.log(tasks)
-      const parsedtasks: TaskState = JSON.parse(savedtasks);
-      dispatch(loadtasks(parsedtasks));
+    const savedTasks = localStorage.getItem('Tasks');
+    
+    if (savedTasks) {
+      const parsedTasks: TaskState = JSON.parse(savedTasks);
+      dispatch(loadTasks(parsedTasks));
     }
   }, [dispatch]);
 
   useEffect(() => {
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-    console.log(tasks)
+    localStorage.setItem('Tasks', JSON.stringify(tasks));
   }, [tasks]);
 
  
-  const handleEdittask = (task: Task) => {
+  const handleEditTask = (Task: Task) => {
     setEditMode(true);
-    setEditingtask(task);
+    setEditingTask(Task);
   };
 
 
   const handleCancelEdit = () => {
     setEditMode(false);
-    setEditingtask(null);
+    setEditingTask(null);
   };
 
 
-  const handleDeletetask = (task: Task) => {
-    setSelectedtask(task);
+  const handleDeleteTask = (Task: Task) => {
+    setSelectedTask(Task);
     setShowModal(true);
   };
 
-  const handleToggletask = (id: number) => {
-    dispatch(toggletask(id));
+  const handleToggleTask = (id: number) => {
+    dispatch(toggleTask(id));
   };
 
   const handleConfirmDelete = () => {
-    if (selectedtask) {
-      dispatch(deletetask(selectedtask.id));
+    if (selectedTask) {
+      dispatch(deleteTask(selectedTask.id));
       setShowModal(false);
     }
   };
 
-  const handleCleartasks = () => {
-    dispatch(cleartasks());
+  const handleClearTasks = () => {
+    dispatch(clearTasks());
   };
 
   const handleCancelDelete = () => {
     setShowModal(false);
   };
 
-  const completedtasksCount = tasks.tasks.filter((task) => task.completed).length;
+  const completedTasksCount = tasks.tasks.filter((task) => task.completed).length;
   const incompletetasksCount = tasks.tasks.filter((task) => !task.completed).length;
 
   return (
     <div>
       <h1 className="title">Task List</h1>
-      <TaskInput editMode={editMode} editingtask={editingtask} onCancelEdit={handleCancelEdit} />
+      <TaskInput editMode={editMode} editingTask={editingTask} onCancelEdit={handleCancelEdit} />
       <TaskCounter/>
       <div className="card-list"> 
       <ul>
@@ -88,26 +86,26 @@ const App: React.FC = () => {
               style={{
                 textDecoration: task.completed ? 'line-through' : 'none',
               }}
-              onClick={() => handleToggletask(task.id)}
+              onClick={() => handleToggleTask(task.id)}
             >
               {task.text}
             </span>
             <div className="task-item-button-container">
-            <button className="edit-task-button" onClick={() => handleEdittask(task)}>Edit</button>
-            <button className="delete-task-button" onClick={() => handleDeletetask(task)}>Delete</button>
+            <button className="edit-task-button" onClick={() => handleEditTask(task)}>Edit</button>
+            <button className="delete-task-button" onClick={() => handleDeleteTask(task)}>Delete</button>
             </div>
           </li>
           </div>
         ))}
       </ul>
       </div>
-      <DeletetaskModal
+      <DeleteTaskModal
         showModal={showModal}
-        selectedtask={selectedtask}
+        selectedTask={selectedTask}
         onConfirmDelete={handleConfirmDelete}
         onCancelDelete={handleCancelDelete}
       />
-      <button className="clear-task-button"onClick={handleCleartasks}>Clear All Tasks</button>
+      <button className="clear-task-button"onClick={handleClearTasks}>Clear All Tasks</button>
     </div>
   );
 };

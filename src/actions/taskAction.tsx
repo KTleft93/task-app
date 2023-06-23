@@ -6,32 +6,32 @@ export const TOGGLE_TASK = 'TOGGLE_TASK';
 export const LOAD_TASKS = 'LOAD_TASKS';
 export const CLEAR_TASKS = 'CLEAR_TASKS';
 
-export const addtask = (task: Task): TaskActionTypes => ({
+export const addTask = (task: Task): TaskActionTypes => ({
   type: 'ADD_TASK',
   payload: task,
 });
 
-export const edittask = (id: number, text: string): TaskActionTypes => ({
+export const editTask = (id: number, text: string): TaskActionTypes => ({
   type: 'EDIT_TASK',
   payload: { id, text },
 });
 
-export const deletetask = (id: number): TaskActionTypes => ({
+export const deleteTask = (id: number): TaskActionTypes => ({
   type: 'DELETE_TASK',
   payload: id,
 });
 
-export const toggletask = (id: number): TaskActionTypes => ({
+export const toggleTask = (id: number): TaskActionTypes => ({
   type: 'TOGGLE_TASK',
   payload: id,
 });
 
-export const loadtasks = (tasks: TaskState): TaskActionTypes => ({
+export const loadTasks = (Tasks: TaskState): TaskActionTypes => ({
   type: 'LOAD_TASKS',
-  payload: tasks,
+  payload: Tasks,
 });
 
-export const cleartasks = (): ClearTasksAction => {
+export const clearTasks = (): ClearTasksAction => {
   return {
     type: CLEAR_TASKS,
     payload:[]

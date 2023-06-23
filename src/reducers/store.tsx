@@ -1,6 +1,6 @@
 import { createStore, combineReducers } from 'redux';
 import { taskReducer } from './taskReducer';
-import {loadtasks} from '../actions/taskAction'
+import {loadTasks} from '../actions/taskAction'
 import { TaskActionTypes } from '../types';
 import { TaskState } from '../types';
 
@@ -13,11 +13,11 @@ const rootReducer = combineReducers<RootState>({
   tasks: taskReducer,
 });
 
-const savedtasks = localStorage.getItem('tasks');
-const initialtasks: TaskState = savedtasks ? JSON.parse(savedtasks) : { tasks: [] };
+const savedTasks = localStorage.getItem('tasks');
+const initialTasks: TaskState = savedTasks ? JSON.parse(savedTasks) : { Tasks: [] };
 
-const store = createStore(rootReducer, { tasks: initialtasks });
+const store = createStore(rootReducer, {tasks: initialTasks });
 
-store.dispatch(loadtasks(initialtasks));
+store.dispatch(loadTasks(initialTasks));
 
 export {store};
