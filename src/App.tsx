@@ -68,9 +68,6 @@ const App: React.FC = () => {
     setShowModal(false);
   };
 
-  const completedTasksCount = tasks.tasks.filter((task) => task.completed).length;
-  const incompletetasksCount = tasks.tasks.filter((task) => !task.completed).length;
-
   return (
     <div>
       <h1 className="title">Task List</h1>
